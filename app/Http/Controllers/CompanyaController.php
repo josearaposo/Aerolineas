@@ -11,9 +11,16 @@ class CompanyaController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->authorizeResource(Companya::class, 'companya');
+    }
+
     public function index()
     {
-        //
+        return view('companyas.index', [
+            'companyas' => Companya::all(),
+        ]);
     }
 
     /**
@@ -21,7 +28,7 @@ class CompanyaController extends Controller
      */
     public function create()
     {
-        //
+        return view('companyas.create');
     }
 
     /**
@@ -29,7 +36,15 @@ class CompanyaController extends Controller
      */
     public function store(StoreCompanyaRequest $request)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|max:255',
+        ]);
+
+        $companya = new Companya();
+        $companya->nombre = $validated['nombre'];
+        $companya->save();
+        session()->flash('success', 'El companya se ha creado correctamente.');
+        return redirect()->route('companyas.index');
     }
 
     /**
@@ -45,7 +60,9 @@ class CompanyaController extends Controller
      */
     public function edit(Companya $companya)
     {
-        //
+        return view('companyas.edit', [
+            'companya' => $companya,
+        ]);
     }
 
     /**
@@ -53,7 +70,14 @@ class CompanyaController extends Controller
      */
     public function update(UpdateCompanyaRequest $request, Companya $companya)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|max:255',
+        ]);
+
+        $companya->nombre = $validated['nombre'];
+        $companya->save();
+        session()->flash('success', 'El companya se ha editado correctamente.');
+        return redirect()->route('companyas.index');
     }
 
     /**
@@ -61,6 +85,7 @@ class CompanyaController extends Controller
      */
     public function destroy(Companya $companya)
     {
-        //
+        $companya->delete();
+        return redirect()->route('companyas.index');
     }
 }
