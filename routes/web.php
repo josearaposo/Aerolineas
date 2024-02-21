@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AeropuertoController;
 use App\Http\Controllers\CompanyaController;
+use App\Http\Controllers\VueloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +27,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::resource('companyas', CompanyaController::class);
+Route::resource('aeropuertos', AeropuertoController::class);
+Route::resource('vuelos', VueloController::class);
 
 require __DIR__.'/auth.php';

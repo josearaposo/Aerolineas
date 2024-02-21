@@ -11,9 +11,16 @@ class AeropuertoController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->authorizeResource(Aeropuerto::class, 'aeropuerto');
+    }
+
     public function index()
     {
-        //
+        return view('aeropuertos.index', [
+            'aeropuertos' => Aeropuerto::all(),
+        ]);
     }
 
     /**
@@ -21,7 +28,7 @@ class AeropuertoController extends Controller
      */
     public function create()
     {
-        //
+        return view('aeropuertos.create');
     }
 
     /**
@@ -29,7 +36,15 @@ class AeropuertoController extends Controller
      */
     public function store(StoreAeropuertoRequest $request)
     {
-        //
+        $validated = $request->validate([
+            'codigo' => 'required|max:6',
+        ]);
+
+        $aeropuerto = new Aeropuerto();
+        $aeropuerto->codigo = $validated['codigo'];
+        $aeropuerto->save();
+        session()->flash('success', 'El aeropuerto se ha creado correctamente.');
+        return redirect()->route('aeropuertos.index');
     }
 
     /**
@@ -45,7 +60,9 @@ class AeropuertoController extends Controller
      */
     public function edit(Aeropuerto $aeropuerto)
     {
-        //
+        return view('aeropuertos.edit', [
+            'aeropuerto' => $aeropuerto,
+        ]);
     }
 
     /**
@@ -53,7 +70,14 @@ class AeropuertoController extends Controller
      */
     public function update(UpdateAeropuertoRequest $request, Aeropuerto $aeropuerto)
     {
-        //
+        $validated = $request->validate([
+            'codigo' => 'required|max:255',
+        ]);
+
+        $aeropuerto->codigo = $validated['codigo'];
+        $aeropuerto->save();
+        session()->flash('success', 'El aeropuerto se ha editado correctamente.');
+        return redirect()->route('aeropuertos.index');
     }
 
     /**
@@ -61,6 +85,7 @@ class AeropuertoController extends Controller
      */
     public function destroy(Aeropuerto $aeropuerto)
     {
-        //
+        $aeropuerto->delete();
+        return redirect()->route('aeropuertos.index');
     }
 }
