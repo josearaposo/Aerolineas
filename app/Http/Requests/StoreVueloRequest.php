@@ -22,7 +22,14 @@ class StoreVueloRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'codigo' => 'required|max:6',
+            'aero_origen' =>'required',
+            'aero_destino' =>'required',
+            'companya_id' =>'required',
+            'hora_salida' =>'required',
+            'hora_llegada' =>'required',
+            'plazas' =>'required',
+            'precio' =>'required',
         ];
     }
 }

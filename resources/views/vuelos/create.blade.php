@@ -58,7 +58,7 @@
                 <x-input-error :messages="$errors->get('companya_id')" class="mt-2" />
             </div>
 
-{{--             <div>
+            <div>
                 <x-input-label for="hora_salida" :value="'Fecha de Salida'" />
 
                 <input for="hora_salida" type="datetime-local" id="hora_salida" name="hora_salida">
@@ -69,20 +69,9 @@
 
                 <input  for="hora_llegada" type="datetime-local" id="hora_llegada" name="hora_llegada">
                 <x-input-error :messages="$errors->get('hora_llegada')" class="mt-2" />
-            </div> --}}
+            </div>
 
-            <div>
-                <x-input-label for="hora_salida" :value="'hora_salida'" />
-                <x-text-input id="hora_salida" class="block mt-1 w-full" type="text" name="hora_salida" :value="old('hora_salida')"
-                    required autofocus autocomplete="hora_salida" />
-                <x-input-error :messages="$errors->get('hora_salida')" class="mt-2" />
-            </div>
-            <div>
-                <x-input-label for="hora_llegada" :value="'hora_salida'" />
-                <x-text-input id="hora_llegada" class="block mt-1 w-full" type="text" name="hora_llegada" :value="old('hora_llegada')"
-                    required autofocus autocomplete="hora_llegada" />
-                <x-input-error :messages="$errors->get('hora_llegada')" class="mt-2" />
-            </div>
+
             <div>
                 <x-input-label for="plazas" :value="'Plazas'" />
                 <x-text-input id="plazas" class="block mt-1 w-full" type="text" name="plazas" :value="old('plazas')"

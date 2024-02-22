@@ -46,28 +46,9 @@ class VueloController extends Controller
      */
     public function store(StoreVueloRequest $request)
     {
-        $validated = $request->validate([
-            'codigo' => 'required|max:6',
-            'aero_salida' =>'required',
-            'aero_llegada' =>'required',
-            'companya_id' =>'required',
-            'hora_salida' =>'required',
-            'hora_llegada' =>'required',
-            'plazas' =>'required',
-            'precio' =>'required',
 
-        ]);
-        dd("Prueba");
-        $vuelo = new Vuelo();
-        $vuelo->codigo = $validated['codigo'];
-        $vuelo->aero_salida = $validated['aero_salida'];
-        $vuelo->aero_llegada = $validated['aero_llegada'];
-        $vuelo->companya_id = $validated['companya_id'];
-        $vuelo->hora_salida = $validated['hora_salida'];
-        $vuelo->hora_llegada = $validated['hora_llegada'];
-        $vuelo->plazas = $validated['plazas'];
-        $vuelo->precio = $validated['precio'];
-        $vuelo->save();
+        $validated = $request->validated();
+        Vuelo::create($validated);
         session()->flash('success', 'El vuelo se ha creado correctamente.');
         return redirect()->route('vuelos.index');
     }
