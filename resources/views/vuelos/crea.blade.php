@@ -3,7 +3,7 @@
         <form method="POST" action="{{ route('vuelos.store') }}">
             @csrf
 
-            <!-- codigo -->
+            <!-- Codigo -->
             <div>
                 <x-input-label for="codigo" :value="'Codigo del Vuelo'" />
                 <x-text-input id="codigo" class="block mt-1 w-full" type="text" name="codigo" :value="old('codigo')"
@@ -71,7 +71,7 @@
                 <x-input-error :messages="$errors->get('hora_llegada')" class="mt-2" />
             </div> --}}
 
-            <div>
+{{--             <div>
                 <x-input-label for="hora_salida" :value="'hora_salida'" />
                 <x-text-input id="hora_salida" class="block mt-1 w-full" type="text" name="hora_salida" :value="old('hora_salida')"
                     required autofocus autocomplete="hora_salida" />
@@ -82,7 +82,7 @@
                 <x-text-input id="hora_llegada" class="block mt-1 w-full" type="text" name="hora_llegada" :value="old('hora_llegada')"
                     required autofocus autocomplete="hora_llegada" />
                 <x-input-error :messages="$errors->get('hora_llegada')" class="mt-2" />
-            </div>
+            </div> --}}
             <div>
                 <x-input-label for="plazas" :value="'Plazas'" />
                 <x-text-input id="plazas" class="block mt-1 w-full" type="text" name="plazas" :value="old('plazas')"
@@ -97,17 +97,15 @@
                 <x-input-error :messages="$errors->get('precio')" class="mt-2" />
             </div>
 
-
-            <div class="flex items-center justify-end mt-4">
-                <a href="{{ route('vuelos.index') }}">
-                    <x-secondary-button class="ms-4">
-                        Volver
-                        </x-primary-button>
-                </a>
-                <x-primary-button class="ms-4">
-                    Insertar
-                </x-primary-button>
-            </div>
-        </form>
+            <a href="{{ route('vuelos.index') }}">
+                <x-secondary-button class="ms-4">
+                    Volver
+                    </x-primary-button>
+            </a>
+            <x-primary-button class="ms-4">
+                Insertar
+            </x-primary-button>
+    </div>
+    </form>
     </div>
 </x-app-layout>
