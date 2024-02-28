@@ -8,7 +8,8 @@
                 <x-input-label for="codigo" :value="'codigo de la compañia'" />
                 <x-text-input id="codigo" class="block mt-1 w-full"
                     type="text" name="codigo" :value="old('codigo')" required
-                    autofocus autocomplete="codigo" />
+                    autofocus autocomplete="codigo" pattern="[A-Z]{3}"
+                    title="El código de vuelo debe tener el formato 'XXX'"/>
                 <x-input-error :messages="$errors->get('codigo')" class="mt-2" />
             </div>
 

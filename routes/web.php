@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AeropuertoController;
 use App\Http\Controllers\CompanyaController;
+use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\VueloController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,7 @@ Route::view('profile', 'profile')
 Route::resource('companyas', CompanyaController::class);
 Route::resource('aeropuertos', AeropuertoController::class);
 Route::resource('vuelos', VueloController::class);
+Route::resource('reservas', ReservaController::class);
+Route::post('reservas/create/{vuelo}', [ReservaController::class, 'create'])->name('reservas.create');
 
 require __DIR__.'/auth.php';

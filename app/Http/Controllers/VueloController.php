@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVueloRequest;
 use App\Http\Requests\UpdateVueloRequest;
+use App\Mail\ConfirmacionVuelo;
 use App\Models\Aeropuerto;
 use App\Models\Companya;
 use App\Models\Vuelo;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Mail;
 
 class VueloController extends Controller
 {

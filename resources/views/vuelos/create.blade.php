@@ -7,7 +7,8 @@
             <div>
                 <x-input-label for="codigo" :value="'Codigo del Vuelo'" />
                 <x-text-input id="codigo" class="block mt-1 w-full" type="text" name="codigo" :value="old('codigo')"
-                    required autofocus autocomplete="codigo" />
+                    required autofocus autocomplete="codigo" pattern="[A-Z]{2}\d{4}"
+                    title="El código de vuelo debe tener el formato 'XXNNNN'"/>
                 <x-input-error :messages="$errors->get('codigo')" class="mt-2" />
             </div>
 
@@ -43,7 +44,7 @@
                 <x-input-error :messages="$errors->get('aero_destino')" class="mt-2" />
             </div>
 
-            <!-- compañias -->
+            <!-- compañia -->
             <div class="mt-4">
                 <x-input-label for="companya_id" :value="'Compañia'" />
                 <select id="companya_id"
@@ -57,7 +58,7 @@
                 </select>
                 <x-input-error :messages="$errors->get('companya_id')" class="mt-2" />
             </div>
-
+<!-- Horas -->
             <div>
                 <x-input-label for="hora_salida" :value="'Fecha de Salida'" />
 
@@ -71,7 +72,7 @@
                 <x-input-error :messages="$errors->get('hora_llegada')" class="mt-2" />
             </div>
 
-
+            <!-- Plazas -->
             <div>
                 <x-input-label for="plazas" :value="'Plazas'" />
                 <x-text-input id="plazas" class="block mt-1 w-full" type="text" name="plazas" :value="old('plazas')"
@@ -79,6 +80,7 @@
                 <x-input-error :messages="$errors->get('plazas')" class="mt-2" />
             </div>
 
+            <!-- Precio -->
             <div>
                 <x-input-label for="precio" :value="'Precio'" />
                 <x-text-input id="precio" class="block mt-1 w-full" type="text" name="precio" :value="old('precio')"
